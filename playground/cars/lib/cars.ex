@@ -26,7 +26,7 @@ defmodule Cars do
   """
 
   def create_garage do
-    ["BMW", "Mercedes", "Audi", "VW", "Porsche", "Opel"]
+    ["BMW", "Mercedes", "Audi", "VW", "Porsche", "Opel", "Toyota"]
   end
 
   @doc """
@@ -109,15 +109,23 @@ defmodule Cars do
     end
   end
 
+  def remove_cars(garage, cars_to_remove) do
+    garage -- cars_to_remove
+  end
+
+  def anon_check() do
+    add = fn a, b -> a + b end
+    add.(1, 2)
+  end
+
   @doc """
   selection takes a number, creates a garage, randomises it and then returns a list
   of cars of length selected
 
   """
   def selection(number_of_cars) do
-    Cars.create_garage
-    |> Cars.randomise
+    Cars.create_garage()
+    |> Cars.randomise()
     |> Cars.see_cars(number_of_cars)
   end
-
 end
